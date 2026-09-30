@@ -12,3 +12,4 @@ C:\c#paistaqiem\OOPGame\obj\Debug\net10.0\refint\OOPGame.dll
 C:\c#paistaqiem\OOPGame\obj\Debug\net10.0\OOPGame.pdb
 C:\c#paistaqiem\OOPGame\obj\Debug\net10.0\OOPGame.genruntimeconfig.cache
 C:\c#paistaqiem\OOPGame\obj\Debug\net10.0\ref\OOPGame.dll
+C:\c#paistaqiem\OOPGame\obj\Debug\net10.0\OOPGame.sourcelink.json
