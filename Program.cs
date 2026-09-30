@@ -99,7 +99,7 @@ public void CekStatus()
         //intraksi
         // player1.Serang(Musuh);
         Musuh.Serang(player1);
-        player1.HealDarah(0);
+        player1.HealDarah(10);
         player1.CekStatus();
         player1.getData();
 
