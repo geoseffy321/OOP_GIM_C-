@@ -46,10 +46,9 @@ namespace KerangkaGame
         // Method Aksi untuk memproses perpindahan posisi
         public void Aksi(int posisiBaru)
         {
-
             if (posisiBaru < 0)
             {
-            posisiBaru = 0;
+                posisiBaru = 0;
             }
 
             int posisiAwal = this.posisiSaatIni;
@@ -114,38 +113,54 @@ namespace KerangkaGame
             Musuh.Serang(player1);
             player1.HealDarah(10);
 
-            // Menerima input posisi dari pengguna (Kode awal kamu)
-            Console.Write("Masukkan posisi tujuan " + player1.nama + ": ");
-            int posisiTujuan = Convert.ToInt32(Console.ReadLine());
-            player1.Aksi(posisiTujuan);
-
-            Console.WriteLine();
-            player1.CekStatus();
-            Console.WriteLine();
-            player1.getData();
-
-            // Tambahan: Mode Kontrol Tombol Keyboard
-            Console.WriteLine("\n--- KONTROL PERGERAKAN KEYBOARD ---");
-            Console.WriteLine("Tekan [Panah Kanan] : Maju +2");
-            Console.WriteLine("Tekan [Panah Kiri]  : Mundur -1");
-            Console.WriteLine("Tekan [ESC]         : Keluar Permainan\n");
-
-            while (true)
+            // Menu Pilihan Mode Pergerakan
+            string pilihanMode = "";
+            while (pilihanMode != "1" && pilihanMode != "2")
             {
-                ConsoleKeyInfo tombol = Console.ReadKey(true);
+                Console.WriteLine("\nMana yang kamu pilih?");
+                Console.WriteLine("1. Perpindahan Angka (ketik angka manual)");
+                Console.WriteLine("2. Tombol Keyboard (menggunakan arrow seperti pada sebelumnya)");
+                Console.Write("Pilihan kamu (1/2): ");
+                pilihanMode = Console.ReadLine()?.Trim();
+            }
 
-                if (tombol.Key == ConsoleKey.RightArrow)
+            // Opsi 1: Input Angka Manual
+            if (pilihanMode == "1")
+            {
+                Console.Write("\nMasukkan posisi tujuan " + player1.nama + ": ");
+                int posisiTujuan = Convert.ToInt32(Console.ReadLine());
+                player1.Aksi(posisiTujuan);
+
+                Console.WriteLine();
+                //doplayer1.CekStatus();
+                Console.WriteLine();
+                player1.getData();
+            }
+            // Opsi 2: Pergerakan Menggunakan Tombol Arrow Keyboard
+            else if (pilihanMode == "2")
+            {
+                Console.WriteLine("\n--- KONTROL PERGERAKAN KEYBOARD ---");
+                Console.WriteLine("Tekan [Panah Kanan] : Maju +2");
+                Console.WriteLine("Tekan [Panah Kiri]  : Mundur -1");
+                Console.WriteLine("Tekan [ESC]         : Keluar Permainan\n");
+
+                while (true)
                 {
-                    player1.Aksi(player1.posisiSaatIni + 2);
-                }
-                else if (tombol.Key == ConsoleKey.LeftArrow)
-                {
-                    player1.Aksi(player1.posisiSaatIni - 1);
-                }
-                else if (tombol.Key == ConsoleKey.Escape)
-                {
-                    Console.WriteLine("\npermainan berakhir");
-                    break;
+                    ConsoleKeyInfo tombol = Console.ReadKey(true);
+
+                    if (tombol.Key == ConsoleKey.RightArrow)
+                    {
+                        player1.Aksi(player1.posisiSaatIni + 2);
+                    }
+                    else if (tombol.Key == ConsoleKey.LeftArrow)
+                    {
+                        player1.Aksi(player1.posisiSaatIni - 1);
+                    }
+                    else if (tombol.Key == ConsoleKey.Escape)
+                    {
+                        Console.WriteLine("\npermainan berakhir");
+                        break;
+                    }
                 }
             }
         }
